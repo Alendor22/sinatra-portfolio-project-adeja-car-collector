@@ -4,7 +4,8 @@ class CreateUserCars < ActiveRecord::Migration
       t.integer :user_id
       t.integer :car_id
 
-      t.timestamps null: false
+      t.timestamps :created_at, null: false
+      t.timestamps :updated_at, null: false
     end
   end
 end

@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20200211010742) do
     t.string   "location"
     t.integer  "price"
     t.boolean  "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_cars", force: :cascade do |t|
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20200211010742) do
     t.string   "location"
     t.string   "favorites"
     t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

@@ -8,8 +8,8 @@ class CreateCars < ActiveRecord::Migration
       t.integer :price
       t.boolean :status
 
-      t.timestamps :created_at
-      t.timestamps :updated_at
+      t.timestamps :created_at, null: false
+      t.timestamps :updated_at, null: false
     end
   end
 end
