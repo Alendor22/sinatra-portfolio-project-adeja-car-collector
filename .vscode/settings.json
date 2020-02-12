@@ -1,0 +1,7 @@
+{
+  "editor.wordWrap": "on",
+  "editor.fontSize": 12.5,
+  "editor.tabSize": 2,
+  "editor.mouseWheelZoom": true,
+  "files.autoSave": "onFocusChange"
+}
