@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   # users new action
   get '/signup' do
-    erb :"/users/new"
+    erb :"users/new"
   end
 
   # users create action
