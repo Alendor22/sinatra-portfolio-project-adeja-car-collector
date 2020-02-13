@@ -1,0 +1,20 @@
+<h1>Create New User</h1>
+  <form action="/users" method="post">
+    <div>
+      <label for="name">Name: </label>
+      <input type="text" name="user[name]" id="name">
+    </div>
+    <div>
+      <label for="location">Location: </label>
+      <input type="text" name="user[location]" id="location">
+    </div>
+    <div>
+      <label for="username">Username: </label>
+      <input type="text" name="user[username]" id="username">
+    </div>
+    <div>
+      <label for="password">Password: </label>
+      <input type="text" name="user[password]" id="password">
+    </div>
+    <input type="submit" value="Create User">
+  </form>
