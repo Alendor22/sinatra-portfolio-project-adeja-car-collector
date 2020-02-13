@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  #define my index action
+  #define user index action
   get '/users' do
     #get all users
     #create an instance variable to hold them
@@ -15,8 +15,9 @@ class UsersController < ApplicationController
   end
 
   # users create action
-  post 'signup' do 
+  post '/signup' do 
     user = User.new(params["user"])
+      
       if user.save
         session[:user_id] = user.id 
         redirect to "/users"
@@ -26,8 +27,36 @@ class UsersController < ApplicationController
       end
     end
 
-    
+    #users show action & dynamic route variable
+    get '/users/:id' do
+      @user = User.find_by(params[:id])
+      erb :"/users/show"
+    end
 
+    # users edit action
+    get '/users/:id/edit' do 
+      @user = User.find_by_id(params[:id])
+      erb :"/users/edit"
+    end
 
+    #users update action
+    patch '/users/:id' do 
+      @user = User.find_by_id(params[:id])
+
+      if@user.update(params[:user])
+        redirect to "/users/#{@user.id}"
+      else
+        erb :"/user/edit"
+      end
+    end
+
+    # users destroy action
+    delete '/user/:id' do 
+      @user = User.find_by_id(params[:id])
+      if @user
+        @user.destroy
+      end
+      redirect to "/users"
+    end
 
 end
