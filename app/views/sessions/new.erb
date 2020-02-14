@@ -1,4 +1,7 @@
 login page
+<% if @user && @user.errors.full_messages.length > 0 %>
+  <h3><% @user.errors.full_messages.to_sentence %></h3>
+<% end %>
 
 <form action="/login" method="post">
   <div class="">

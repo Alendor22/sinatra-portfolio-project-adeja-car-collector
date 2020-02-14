@@ -13,14 +13,17 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
-  def loged_in? 
-    #returns true if logged_in, otherwise false
-    !!current_user
-  end
-
-  def current_user
-    #returns the current_user object if there is one, otherwise nil
-    User.find_by(id: session[:user_id])
+  helpers do 
+    def current_user
+      # returns the current_user object if there is one, otherwise nil
+      # checks the session hash and finds a user based on the :user_id key
+      @current_user ||= User.find_by(id: session[:user_id])
+    end
+  
+    def logged_in? 
+        # returns true if logged_in, otherwise false
+        !!current_user
+    end
   end
 
 end

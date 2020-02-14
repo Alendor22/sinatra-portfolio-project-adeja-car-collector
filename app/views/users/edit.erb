@@ -1,0 +1,21 @@
+<h1>Edit User</h1>
+  <form action="/users/<%= current_user.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+    <div>
+      <label for="location">Location: </label>
+      <input type="text" name="user[location]" value= "<%= current_user.location %>" id="location">
+    </div>
+    <div>
+      <label for="favorites">Favorite Car: </label>
+      <input type="text" name="user[favorites]" value= "<%= current_user.favorites %>" id="favorites">
+    </div>
+    <div>
+      <label for="username">Username: </label>
+      <input type="text" name="user[username]" value= "<%= current_user.username %>" id="username">
+    </div>
+    <div>
+      <label for="password">Password: </label>
+      <input type="password" name="user[password]" id="password">
+    </div>
+    <input type="submit" value="Edit User">
+  </form>

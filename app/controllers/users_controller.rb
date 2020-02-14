@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   # users create action
-  post '/signup' do 
+  post '/users' do 
     user = User.new(params["user"])
       
       if user.save
@@ -27,9 +27,9 @@ class UsersController < ApplicationController
       end
     end
 
-    #users show action & dynamic route variable
+    #users show action via dynamic route variable
     get '/users/:id' do
-      @user = User.find_by(params[:id])
+      @user = User.find_by(id: params[:id])
       erb :"/users/show"
     end
 
@@ -42,8 +42,8 @@ class UsersController < ApplicationController
     #users update action
     patch '/users/:id' do 
       @user = User.find_by_id(params[:id])
-
-      if@user.update(params[:user])
+      #binding.pry
+      if @user.authenticate(params[:user][:password]) && @user.update(params[:user])
         redirect to "/users/#{@user.id}"
       else
         erb :"/user/edit"
