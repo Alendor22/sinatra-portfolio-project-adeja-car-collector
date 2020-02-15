@@ -1,6 +1,10 @@
-<div class="jumbotron">
+<div class="">
   <h3>User Info</h3>
-  <h4>Username: <%= @user.username %></h4>
-  <h4>Location: <%= @user.location %></h4>
-  <h4>Favorites: <%= @user.favorites %></h4>
+  <ul>
+    <li>Username: <%= @user.username %></li>
+    <li>Location: <%= @user.location %></li>
+    <li>Favorites: <%= @user.favorites %></li>
+    <li><a href= "/users/<%= current_user.id %>/edit">Edit User</a></li>
+  </ul>
+
   

@@ -16,9 +16,9 @@ class UsersController < ApplicationController
 
   # users create action
   post '/users' do 
-    user = User.new(params["user"])
+    @user = User.new(params["user"])
       
-      if user.save
+      if @user.save
         session[:user_id] = user.id 
         redirect to "/users"
       else
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       if @user.authenticate(params[:user][:password]) && @user.update(params[:user])
         redirect to "/users/#{@user.id}"
       else
-        erb :"/user/edit"
+        erb :"/user/show"
       end
     end
 
@@ -55,8 +55,10 @@ class UsersController < ApplicationController
       @user = User.find_by_id(params[:id])
       if @user
         @user.destroy
+        redirect to "/users"
+      else
+        redirect to "/users"
       end
-      redirect to "/users"
     end
 
 end
