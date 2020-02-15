@@ -1,28 +1,6 @@
-<div class="">
+<div class="jumbotron">
   <h3>User Info</h3>
-  <h4><%= @user.username %></h4>
-    <a href= >Name:</a>
-      <%# <form action="/users" method="get">
-    <div>
-      <label for="name">Name: </label>
-      <input type="text" name="user[name]" id="name">
-    </div>
-    <div>
-      <label for="location">Location: </label>
-      <input type="text" name="user[location]" id="location">
-    </div>
-    <div>
-      <label for="favorites">Favorite Car: </label>
-      <input type="text" name="user[favorites]" id="favorites">
-    </div>
-    <div>
-      <label for="username">Username: </label>
-      <input type="text" name="user[username]" id="username">
-    </div>
-    <div>
-      <label for="password">Password: </label>
-      <input type="password" name="user[password]" id="password">
-    </div>
-    <input type="submit" value="Create User">
-  </form>
-</div> %>
+  <h4>Username: <%= @user.username %></h4>
+  <h4>Location: <%= @user.location %></h4>
+  <h4>Favorites: <%= @user.favorites %></h4>
+  

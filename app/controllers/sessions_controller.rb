@@ -19,6 +19,7 @@ class SessionController < ApplicationController
       session[:user_id] = user.id # act of logging someone in!
       redirect to "/users/#{user.id}"
     else
+      flash[:login] = "Please try again"
       redirect to '/login'
     end
   end
