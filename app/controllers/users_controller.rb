@@ -42,7 +42,6 @@ class UsersController < ApplicationController
     #users update action
     patch '/users/:id' do 
       @user = User.find_by_id(params[:id])
-      #binding.pry
       if @user.authenticate(params[:user][:password]) && @user.update(params[:user])
         redirect to "/users/#{@user.id}"
       else
@@ -51,14 +50,14 @@ class UsersController < ApplicationController
     end
 
     # users destroy action
-    delete '/user/:id' do 
-      @user = User.find_by_id(params[:id])
-      if @user
-        @user.destroy
-        redirect to "/users"
-      else
-        redirect to "/users"
-      end
+    delete '/users/:id' do
+       @user = User.find_by_id(params[:id])
+        if @user != current_user
+            redirect to "/users"
+        else
+         @user.destroy
+         redirect "/users/index"
+        end
     end
 
 end
