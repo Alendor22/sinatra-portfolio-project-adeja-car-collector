@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       erb :"/users/show"
     end
 
-    # users edit action
+    # users get edit action
     get '/users/:id/edit' do 
       @user = User.find_by_id(params[:id])
       erb :"/users/edit"
