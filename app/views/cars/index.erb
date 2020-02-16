@@ -1,6 +1,6 @@
 <ul>
   <% @cars.each do |car| %>
-    <li><a href="/cars/<%= car.id %>"><%= car.make %></a></li>
+    <li><a href="/cars/<%= car.id %>"><%= car.year %> <%= car.make %> <%= car.model %>  Location: <%= car.location %> Price: <%= car.price %> For Sale: <%= car.status %> </a></li>
     <% end %>
 </ul>
 
