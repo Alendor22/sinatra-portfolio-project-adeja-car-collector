@@ -24,7 +24,7 @@ class CarsController < ApplicationController
   #cars show action via dynamic route variable
   get '/cars/:id' do
     @cars = Car.find_by(id: params[:id])
-    #binding.pry
+    
     erb :"/cars/show"
   end
 
