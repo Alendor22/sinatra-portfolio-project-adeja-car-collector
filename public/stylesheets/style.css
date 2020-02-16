@@ -6,12 +6,6 @@ p, div {
   font-family: 'Nunito', sans-serif; color:magenta;
 }
 
-.home-page-bkgd {
-  background-image:url('/images/dog.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .home-page-container {
   height: 100%;
   display: flex;
