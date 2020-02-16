@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+
     <meta charset="utf-8">
     <title>Car Collector App</title>
   </head>
   <body>
     <div class="home-page-bkgd jumbotron">
       <div class="text-center">
-        <p>Keep track of your favorite car on your wish list!</p>
-          <h3> Current User: <%= current_user ? current_user.name : "no one logged in" %></h3>
+        <h1>Welcome, You've Got Cars!</h1>
+        <h3>Keep track of your favorite car on your wish list!</h3>
+          <h4> Current User: <%= current_user ? current_user.name : "no one logged in" %></h4>
             <nav>
               <ul>
                 <% if logged_in? %>
