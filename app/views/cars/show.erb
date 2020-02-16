@@ -1,0 +1,13 @@
+<div class="">
+  <h3>Car Info </h3>
+  <ul>
+    <li>Model Year: <%= @car.year %></li>
+    <li>Make: <%= @car.make %></li>
+    <li>Model: <%= @car.model %></li>
+    <li>Car Location: <%= @car.location %></li>
+    <li>Price of Car: <%= @car.price %></li>
+    <li>Sales Status: <%= @car.status %></li>
+    <li><a href= "/users/cars/edit<%= car.id %>/edit">Edit Car</a></li>
+    <li><a href= "/users/cars<%= car.id %>/delete">Delete Car</a></li>
+    <li><a href= "/users/cars">Back</a></li>
+  </ul>
