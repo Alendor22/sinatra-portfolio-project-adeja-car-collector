@@ -1,0 +1,31 @@
+<h1>Edit Car Listing</h1>
+  <form action="/cars/" method="post">
+    <div>
+      <label for="year">Year: </label>
+      <input type="text" name="car[year]" id="year">
+    </div>
+    <div>
+      <label for="make">Make: </label>
+      <input type="text" name="car[make]" id="make">
+    </div>
+    <div>
+      <label for="model">Model: </label>
+      <input type="text" name="car[model]" id="model">
+    </div>
+    <div>
+      <label for="location">Location: </label>
+      <input type="text" name="car[location]" id="location">
+    </div>
+    <div>
+      <label for="price">Price: </label>
+      <input type="text" name="car[price]" id="price">
+    </div>
+    <div>
+      <label for="status">Status-For Sale: </label>
+      <input type="checkbox" id="car[status]" name="car[status]" value="true">
+      <label for="status">Status-Not For Sale: </label>
+      <input type="checkbox" id="car[status]" name="car[status]" value="false">
+    </div>
+    <input type="submit" value="Create Car">
+    <input type="reset">
+  </form>
