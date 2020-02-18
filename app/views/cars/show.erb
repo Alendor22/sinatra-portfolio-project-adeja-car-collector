@@ -1,13 +1,21 @@
 <div class="">
   <h3>Car Info </h3>
   <ul>
-    <li>Model Year: <%= @car.year %></li>
-    <li>Make: <%= @car.make %></li>
-    <li>Model: <%= @car.model %></li>
-    <li>Car Location: <%= @car.location %></li>
-    <li>Price of Car: <%= @car.price %></li>
-    <li>Sales Status: <%= @car.status %></li>
-    <li><a href= "/cars/edit<%= car_id.id %>/edit">Edit Car</a></li>
-    <li><a href= "/cars/index<%= car_id.id %>/delete">Delete Car</a></li>
-    <li><a href= "/cars">Back</a></li>
+    <li>Model Year: <%= @cars.year %></li>
+    <li>Make: <%= @cars.make %></li>
+    <li>Model: <%= @cars.model %></li>
+    <li>Car Location: <%= @cars.location %></li>
+    <li>Price of Car: <%= @cars.price %></li>
+    <li>Sales Status: <%= @cars.status %></li>
+    <a href= "/cars">Back</a>
+    
   </ul>
+  <form action="/cars/<%= @cars.id %>/edit" method="patch">
+    <input type="hidden" name="_method" value="edit">
+    <input type="submit" value="EDIT">
+  </form>
+  <form action="/cars/<%= @cars.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="DELETE">
+  </form>
+  </li><a href= "/cars/<%= @cars.id %>/edit">Edit Car</a></li>
