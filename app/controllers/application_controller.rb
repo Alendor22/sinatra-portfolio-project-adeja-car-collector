@@ -25,6 +25,10 @@ class ApplicationController < Sinatra::Base
         # returns true if logged_in, otherwise false
         !!current_user
     end
+
+    def is_authorized?
+      current_user == @cars.id
+    end
   
   end
 
