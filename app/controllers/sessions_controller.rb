@@ -1,4 +1,4 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
 
   # The routes that live here are:
   # login & logout
@@ -23,7 +23,7 @@ class SessionController < ApplicationController
     end
   end
 
-  post '/logout' do 
+  get '/logout' do 
     session.clear
     redirect to '/'
   end
