@@ -1,5 +1,6 @@
-<h1>Edit Car Listing</h1>
-  <form action="/cars/" method="post">
+<h3>Edit Car Listing</h3>
+  <form action="/cars/<%= @cars.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
     <div>
       <label for="year">Year: </label>
       <input type="text" name="car[year]" id="year">
@@ -22,10 +23,11 @@
     </div>
     <div>
       <label for="status">Status-For Sale: </label>
-      <input type="checkbox" id="car[status]" name="car[status]" value="true">
+      <input type="radio" id="car[status]" name="car[status]" value="true">
       <label for="status">Status-Not For Sale: </label>
-      <input type="checkbox" id="car[status]" name="car[status]" value="false">
+      <input type="radio" id="car[status]" name="car[status]" value="false">
     </div>
-    <input type="submit" value="Create Car">
+    <input type="submit" value="Edit Car">
     <input type="reset">
   </form>
+  <a href= "/cars<%= current_user %>">BACK</a>
