@@ -5,8 +5,11 @@
     <li>User Location: <%= @user.location %></li>
     <li>Favorite Car: <%= @user.favorites %></li>
     <li><a href= "/users/<%= current_user.id %>/edit">Edit User</a></li>
-    <li><a href= "/users/<%= current_user.id %>/delete">Delete User</a></li>
     <li><a href= "/">Back</a></li>
   </ul>
+      <form action="/users/<%= current_user.id %>" method="post">
+        <input type="hidden" name="_method" value=" delete">
+        <input type="submit" value="DELETE">
+      </form>
 
   
