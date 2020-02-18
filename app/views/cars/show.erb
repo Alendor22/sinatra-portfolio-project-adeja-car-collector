@@ -10,12 +10,12 @@
     <a href= "/cars">Back</a>
     
   </ul>
-  <form action="/cars/<%= @cars.id %>/edit" method="patch">
-    <input type="hidden" name="_method" value="edit">
+  <form action="/cars/<%= @cars.id %>/edit" method="post">
+    <input type="hidden" name="_method" value="patch">
     <input type="submit" value="EDIT">
   </form>
   <form action="/cars/<%= @cars.id %>" method="post">
-    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="DELETE">
   </form>
   </li><a href= "/cars/<%= @cars.id %>/edit">Edit Car</a></li>
