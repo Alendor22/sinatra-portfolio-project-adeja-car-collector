@@ -56,7 +56,9 @@ class UsersController < ApplicationController
     # users destroy action
     delete '/users/:id' do
        @user = User.find_by_id(params[:id])
-        if @user != current_user
+       #binding.pry
+       if @user.id != current_user.id
+          
             redirect to "/users/index"
         else
          @user.destroy
