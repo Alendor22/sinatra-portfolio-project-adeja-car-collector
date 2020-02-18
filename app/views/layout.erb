@@ -8,25 +8,25 @@
   <body>
     <div class="home-page-bkgd jumbotron">
       <div class="text-center">
-        <h1>Welcome, You've Got Cars!</h1>
+      <a href= "/<%= current_user %>">HOME</a>
+        <h1>Welcome to the Car Collector App, You've Got Favorites!</h1>
         <h3>Keep track of your favorite car on your wish list!</h3>
-          <h4> Current User: <%= current_user ? current_user.name : "no one logged in" %></h4>
+          <h4> Current User: <%= current_user ? current_user.username : "no one logged in" %></h4>
             <nav>
               <ul>
                 <% if logged_in? %>
-                <li><form class=""action="/logout" method="post">
-                <input type="submit" name="" value="log out">
-                </form></li>
+                <form class=""action="/logout" method="get">
+                <input type="submit" name="_method" value="log out">
+                </form>
 
                 <% else %>
                   <li><a href= "/signup">Sign up</a></li>
                   <li><a href="/login">Login</a></li>
 
                 <% end %>
-                <li><a href="/users">View All Users, by Username</a></li>
+                <li><a href="/users">View All Usernames</a></li>
                 <li><a href="/cars">View All Cars</a></li>
                 <li><a href="/cars/new">Create a Car listing</a></li>
-                <li><a href="/cars/edit">Edit a Car listing</a></li>
               </ul>
               </nav>
             <%= yield %>
