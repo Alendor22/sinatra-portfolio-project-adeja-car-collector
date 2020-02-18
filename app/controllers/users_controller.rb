@@ -19,10 +19,9 @@ class UsersController < ApplicationController
     @user = User.new(params["user"])
       
       if @user.save
-        session[:user_id] = user.id 
+        session[:user_id] = @user.id 
         redirect to "/users"
       else
-        @errors = user.errors.full_message
         erb :"/users/new"
       end
     end
@@ -36,11 +35,16 @@ class UsersController < ApplicationController
     # users get edit action
     get '/users/:id/edit' do 
       @user = User.find_by_id(params[:id])
+      if @user == current_user
+        # show the form
       erb :"/users/edit"
+      else
+        redirect to "/"
+      end
     end
 
     #users update action
-    patch '/users/:id' do 
+    patch '/users/:id' do
       @user = User.find_by_id(params[:id])
       if @user.authenticate(params[:user][:password]) && @user.update(params[:user])
         redirect to "/users/#{@user.id}"
@@ -53,10 +57,11 @@ class UsersController < ApplicationController
     delete '/users/:id' do
        @user = User.find_by_id(params[:id])
         if @user != current_user
-            redirect to "/users"
+            redirect to "/users/index"
         else
          @user.destroy
-         redirect "/users/index"
+         session.clear
+         redirect "/users"
         end
     end
 
