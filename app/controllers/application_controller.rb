@@ -10,10 +10,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    erb :"welcome"
   end
 
   helpers do 
+    
     def current_user
       # returns the current_user object if there is one, otherwise nil
       # checks the session hash and finds a user based on the :user_id key
@@ -24,6 +25,7 @@ class ApplicationController < Sinatra::Base
         # returns true if logged_in, otherwise false
         !!current_user
     end
+  
   end
 
 end
