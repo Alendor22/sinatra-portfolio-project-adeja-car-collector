@@ -8,47 +8,60 @@ class CarsController < ApplicationController
     # render the cars index view
     erb :"/cars/index"
   end
+  
+  get '/cars/new' do
+    erb :"/cars/new"
+  end
 
   # cars create action
   post '/cars' do 
-    @cars = Car.new(params["car"])
-      if @cars.save
-        session[:car_id] = car.id 
-        redirect to "/cars"
-      else
-        @errors = car.errors.full_message
-        erb :"/cars/new"
-      end
+   @cars = Car.new(params["car"])
+    if @cars.save
+      session[:user_id] = @cars.id 
+      redirect to "/cars"
+    else
+      @errors = car.errors.full_message
+      erb :"/cars/new"
+    end
   end
 
   #cars show action via dynamic route variable
   get '/cars/:id' do
     @cars = Car.find_by(id: params[:id])
-    
     erb :"/cars/show"
   end
 
   # cars get edit action
   get '/cars/:id/edit' do 
     @cars = Car.find_by_id(params[:id])
+    if @user == current_user
     erb :"/cars/edit"
+    else redirect to "/cars"
+    end
   end
 
   #cars update action
   patch '/cars/:id' do 
-    @cars = User.find_by_id(params[:id])
-    if @user.authenticate(params[:user][:password]) && @user.update(params[:user])
-      redirect to "/cars/#{@car.id}"
+    @cars = Car.find_by(id: params[:id])
+    #@user = current_user
+    if @user.id == current_user
+      @cars.update
+      redirect to "/cars"
     else
-      erb :"/cars/show"
+      erb :"/cars/index"
     end
   end
 
   # cars destroy action
   delete '/cars/:id' do
+    #binding.pry
     @cars = Car.find_by_id(params[:id])
+    if @user.id == @cars.id
     @cars.destroy
-    redirect to "/cars/index"
+    redirect to "/cars"
+    else
+    erb :"cars/index"
+    end
   end
 
 end
