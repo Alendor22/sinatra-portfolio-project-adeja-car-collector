@@ -1,15 +1,24 @@
 <div class="">
   <h3>User Info </h3>
   <ul>
-    <li>Username: <%= @user.username %></li>
-    <li>User Location: <%= @user.location %></li>
-    <li>Favorite Car: <%= @user.favorites %></li>
+    <li>Username: <%= current_user.username %></li>
+    <li>User Location: <%= current_user.location %></li>
+    <li>Favorite Cars: <% current_user.favorite_cars.each do |car| %>
+                        <p><%= car.year %> - <%= car.make %> - <%= car.make %> - <%= car.model %></p>
+                        <% end %></li>
+    <% if current_user.all_time_favorite %>
+    <li>All Time Favorite:
+    <p><%= current_user.all_time_favorite.year %> - <%= current_user.all_time_favorite.make %> - <%= current_user.all_time_favorite.model %> - <%= current_user.all_time_favorite.price %>
+    </p></li>
+    <% end %>
     <li><a href= "/users/<%= current_user.id %>/edit">Edit User</a></li>
     <li><a href= "/">Back</a></li>
   </ul>
-      <form action="/users/<%= current_user.id %>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="DELETE">
-      </form>
+  <% if current_user.id == @user.id %>
+    <form action="/users/<%= current_user.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="DELETE">
+    </form>
+  <% end %>
 
   
