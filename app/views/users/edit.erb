@@ -6,8 +6,13 @@
       <input type="text" name="user[location]" value= "<%= current_user.location %>" id="location">
     </div>
     <div>
-      <label for="favorites">Favorite Car: </label>
-      <input type="text" name="user[favorites]" value= "<%= current_user.favorites %>" id="favorites">
+      <label for="favorite car">Favorite Car -  </label> 
+      <label for="favorite year">Favorite Year of Car: </label>
+      <input type="text" name="user[favorite_car]" value= "<% current_user.favorite_cars.map { |car| car.year }%>" id="all time favorite year of car">
+      <label for="favorite make">Favorite Make of Car: </label>
+      <input type="text" name="user[favorite_car]" value= "<% current_user.favorite_cars.map { |car| car.make } %>" id="all time favorite make of car">
+      <label for="favorite model">Favorite Model of Car: </label>
+      <input type="text" name="user[favorite_car]" value= "<% current_user.favorite_cars.map { |car| car.model }%>" id="all time favorite model of car">
     </div>
     <div>
       <label for="username">Username: </label>
@@ -17,5 +22,7 @@
       <label for="password">Password: </label>
       <input type="password" name="user[password]" id="password">
     </div>
+  <% if current_user.id == @user.id %>
     <input type="submit" value="Edit User">
   </form>
+  <% end %>
