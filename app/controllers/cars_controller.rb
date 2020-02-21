@@ -4,7 +4,7 @@ class CarsController < ApplicationController
   get '/cars' do
     #get all cars
     #create an instance variable to hold them
-    @cars = Car.all
+    @car = Car.all
     # render the cars index view
     erb :"/cars/index"
   end
@@ -13,55 +13,60 @@ class CarsController < ApplicationController
     erb :"/cars/new"
   end
 
-  # cars create action
+  # car create action - 
   post '/cars' do 
-   @cars = Car.new(params["car"])
-    if @cars.save
-      session[:user_id] = @cars.id 
-      redirect to "/cars"
+    # ensure that someone is logged in - done
+    # ensure that the current user is assoc. with the car
+    if !logged_in?
+      redirect to '/login'
     else
-      @errors = car.errors.full_message
-      erb :"/cars/new"
+      
+      @car = Car.new(params["car"])
+      current_user.id = @car.owner_id
+      @car.save 
     end
+    redirect to "/cars"
   end
 
-  #cars show action via dynamic route variable
+  #car show action via dynamic route variable
   get '/cars/:id' do
-    @cars = Car.find_by(id: params[:id])
+    @car = Car.find_by(id: params[:id])
+    binding.pry
     erb :"/cars/show"
   end
 
-  # cars get edit action
+  # car get edit action
   get '/cars/:id/edit' do 
-    @cars = Car.find_by_id(params[:id])
-    if @user == current_user
+    @car = Car.find_by_id(params[:id])
+    if @car.owner = current_user.id
     erb :"/cars/edit"
     else redirect to "/cars"
     end
   end
 
-  #cars update action
+  #car update action
   patch '/cars/:id' do 
-    @cars = Car.find_by(id: params[:id])
-    #@user = current_user
-    if @user.id == current_user
-      @cars.update
-      redirect to "/cars"
-    else
-      erb :"/cars/index"
+    @car = Car.find_by(id: params[:id])
+    if current_user.id == @car.owner_id
+      @car.update(params["car"])
     end
+    redirect to "/cars"
   end
 
-  # cars destroy action
+  # car destroy action - working 
   delete '/cars/:id' do
-    #binding.pry
-    @cars = Car.find_by_id(params[:id])
-    if @user.id == @cars.id
-    @cars.destroy
-    redirect to "/cars"
-    else
-    erb :"cars/index"
+    @car = Car.find_by_id(params[:id])
+    if current_user.id == @car.owner_id
+    
+    @car.destroy(params["car"])
     end
+    redirect to "/cars"
   end
+
+  # get '/cars/:car_id/owners' do
+  #   @car = Car.find_by(id: params[:id])
+  #   car_owner?
+  #   erb :"/cars/owners"
+  # end
 
 end
