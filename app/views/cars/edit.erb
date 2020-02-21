@@ -1,5 +1,5 @@
 <h3>Edit Car Listing</h3>
-  <form action="/cars/<%= @cars.id %>" method="post">
+  <form action="/cars/<%= @car.id %>" method="POST">
   <input type="hidden" name="_method" value="patch">
     <div>
       <label for="year">Year: </label>
@@ -27,8 +27,10 @@
       <label for="status">Status-Not For Sale: </label>
       <input type="radio" id="car[status]" name="car[status]" value="false">
     </div>
+  <% if current_user.id == @car.owner.id %>
     <input type="submit" value="Edit Car">
     <input type="reset">
   </form>
+  <% end %>
   <a href= "/cars<%= current_user %>">BACK</a>
-  <a href= "/cars/<%= @cars.id %>/edit">EDIT CAR</a>
+  <!--<a href= "/cars/<%= @car.id %>/edit">EDIT CAR</a>-->
