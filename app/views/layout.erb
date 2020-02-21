@@ -18,15 +18,17 @@
                 <form class=""action="/logout" method="get">
                 <input type="submit" name="_method" value="log out">
                 </form>
-
                 <% else %>
                   <li><a href= "/signup">Sign up</a></li>
                   <li><a href="/login">Login</a></li>
-
                 <% end %>
+                
                 <li><a href="/users">View All Usernames</a></li>
                 <li><a href="/cars">View All Cars</a></li>
                 <li><a href="/cars/new">Create a Car listing</a></li>
+
+                <!--<li><a href="/cars/:car_id/owners">View All Car Owners</a></li>-->
+                <!--<li><a href="/cars/index/favorites">Favorite a Car</a></li>-->
               </ul>
               </nav>
             <%= yield %>
