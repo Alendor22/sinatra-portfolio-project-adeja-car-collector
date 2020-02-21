@@ -1,16 +1,30 @@
 <div class="">
   <h3>Car Info </h3>
   <ul>
-    <li>Model Year: <%= @cars.year %></li>
-    <li>Make: <%= @cars.make %></li>
-    <li>Model: <%= @cars.model %></li>
-    <li>Car Location: <%= @cars.location %></li>
-    <li>Price of Car: <%= @cars.price %></li>
-    <li>Sales Status: <%= @cars.status %></li>
-    <a href= "/cars">Back</a>
-    
+    <li>Model Year: <%= @car.year %></li>
+    <li>Make: <%= @car.make %></li>
+    <li>Model: <%= @car.model %></li>
+    <li>Car Location: <%= @car.location %></li>
+    <li>Price of Car: <%= @car.price %></li>
+    <li>Sales Status: <%= @car.status %></li>
+    <% if @car.fans %>
+    <li>All My Fans: <% @car.fans.each do |fan| %>
+      <p>Fan Name: <%= fan.name %> -- Fan Username: <%= fan.username %> -- Fan Location: <%= fan.location %>
+        <% end %></p>
+    </li>
+    <% end %> 
   </ul>
-  <form action="/cars/<%= @cars.id %>" method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="DELETE">
-  </form>
+      <!--<form action="/cars/index/favorites<%= @car.id %>" method="POST">
+        <input type="submit" value="Favorite">
+      </form>-->
+      
+    <% if current_user.id == @car.owner_id %>
+      <form>
+        <input type="submit" value="EDIT USER">
+      </form>
+      <form action="/cars/<%= @car.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="DELETE">
+      </form>
+    <% end %>
+    <a href= "/cars">Back</a>
