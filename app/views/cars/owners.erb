@@ -1,0 +1,7 @@
+ binding.pry
+<ul>
+  <% @car.each do |car| %>
+    <li><a href="/cars/:car_id/owners<%= car.id %>"><%= car.year %> -- <%= car.make %> -- <%= car.model %> -- Location: <%= car.location %> -- Price: <%= car.price %> -- For Sale: <%= car.status %></a>
+  </li>
+  <% end %>
+</ul>
