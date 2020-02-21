@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def is_authorized?
-      current_user == @cars.id
+      current_user.id == @car.owner_id
     end
   
   end
