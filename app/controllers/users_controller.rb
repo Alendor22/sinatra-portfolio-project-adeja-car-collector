@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  #define user index action
+  # user index action/route
   get '/users' do
     #get all users
     #create an instance variable to hold them
@@ -9,12 +9,14 @@ class UsersController < ApplicationController
     erb :"/users/index"
   end
 
-  # users new action - working
+  # users signup action/route - working
   get '/signup' do
     erb :"users/new"
   end
 
-  # users create action - working
+
+
+  # users create action/route - working
   post '/users' do 
     
     @user = User.new(params["user"])
@@ -26,19 +28,18 @@ class UsersController < ApplicationController
       end
   end
 
-    #users show action via dynamic route variable
+    #users show action/route via dynamic route variable - show one user
     get '/users/:id' do
-      @user = User.find_by(id: params[:id])
+      find_user
       erb :"/users/show"
     end
 
-    # users get edit action
+    # users get edit action/route
     get '/users/:id/edit' do 
-      @user = User.find_by(id: params[:id])
-      
+      find_user 
       if current_user.id == @user.id 
         # show the form
-        #binding.pry
+      binding.pry
       erb :"/users/edit"
       else
         redirect to "/"
@@ -47,22 +48,21 @@ class UsersController < ApplicationController
 
     #users update action
     patch '/users/:id' do
-      @user = User.find_by_id(params[:id])
+      find_user
       if logged_in?
         #binding.pry
-        @user.update#(:location current_user.location, :favorite_car current_user.favorites)
-        #map { |car| car.year }, current_user.favorite_cars.map { |car| car.make }, current_user.favorite_cars.map { |car| car.model })
+        user.update(location: @user.location, favorites: @user.favorite)
         redirect to "/users/#{@user.id}"
       end
     end
 
     # users destroy action
     delete '/users/:id' do
-      @user = User.find_by_id(params[:id])
-      if current_user.id != @user.id
+      find_user
+      if current_user.id != @car.owner_id
         redirect to "/users/index"
       else
-        @user.destroy
+        @user.cars.destroy
         session.clear
         redirect "/users"
       end
