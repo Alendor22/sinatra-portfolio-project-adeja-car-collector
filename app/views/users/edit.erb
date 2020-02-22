@@ -1,6 +1,6 @@
 <h4>Edit Current User</h4>
-  <form action="/users/<%= current_user.id %>" method="post">
-  <input type="hidden" name="_method" value="patch">
+  <form action="/users/<%= current_user.id %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
     <div>
       <label for="location">Location: </label>
       <input type="text" name="user[location]" value= "<%= current_user.location %>" id="location">
