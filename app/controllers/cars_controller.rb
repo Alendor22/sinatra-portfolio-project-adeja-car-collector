@@ -19,8 +19,8 @@ class CarsController < ApplicationController
     # ensure that the current user is assoc. with the car
     if !logged_in?
       redirect to '/login'
+      binding.pry
     else
-      
       @car = Car.new(params["car"])
       current_user.id = @car.owner_id
       @car.save 
@@ -30,15 +30,15 @@ class CarsController < ApplicationController
 
   #car show action via dynamic route variable
   get '/cars/:id' do
-    @car = Car.find_by(id: params[:id])
-    binding.pry
+    find_car
+    #binding.pry
     erb :"/cars/show"
   end
 
   # car get edit action
   get '/cars/:id/edit' do 
-    @car = Car.find_by_id(params[:id])
-    if @car.owner = current_user.id
+    find_car
+    if current_user.id == @car.owner
     erb :"/cars/edit"
     else redirect to "/cars"
     end
@@ -46,18 +46,17 @@ class CarsController < ApplicationController
 
   #car update action
   patch '/cars/:id' do 
-    @car = Car.find_by(id: params[:id])
+    find_car
     if current_user.id == @car.owner_id
       @car.update(params["car"])
     end
-    redirect to "/cars"
+      redirect to "/cars"
   end
 
   # car destroy action - working 
   delete '/cars/:id' do
-    @car = Car.find_by_id(params[:id])
+    find_car
     if current_user.id == @car.owner_id
-    
     @car.destroy(params["car"])
     end
     redirect to "/cars"
