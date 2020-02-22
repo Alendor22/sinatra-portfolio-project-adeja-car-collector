@@ -17,12 +17,13 @@ class CarsController < ApplicationController
   post '/cars' do 
     # ensure that someone is logged in - done
     # ensure that the current user is assoc. with the car
+    
     if !logged_in?
       redirect to '/login'
-      binding.pry
+      
     else
       @car = Car.new(params["car"])
-      current_user.id = @car.owner_id
+      @car.owner_id = current_user.id
       @car.save 
     end
     redirect to "/cars"
