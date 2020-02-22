@@ -7,10 +7,18 @@
     <li>Car Location: <%= @car.location %></li>
     <li>Price of Car: <%= @car.price %></li>
     <li>Sales Status: <%= @car.status %></li>
+    <% if current_user.cars %>
+    <li>All My Cars: <% current_user.cars.each do |car| %>
+      <p>Car Year: <%= car.year %> -- Car Make: <%= car.make %> -- Car Model: <%= car.model %>
+        <% end %>
+      </p>
+    </li>
+    <% end %>
     <% if @car.fans %>
     <li>All My Fans: <% @car.fans.each do |fan| %>
       <p>Fan Name: <%= fan.name %> -- Fan Username: <%= fan.username %> -- Fan Location: <%= fan.location %>
-        <% end %></p>
+        <% end %>
+      </p>
     </li>
     <% end %> 
   </ul>
