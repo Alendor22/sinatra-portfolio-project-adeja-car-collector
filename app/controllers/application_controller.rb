@@ -26,6 +26,14 @@ class ApplicationController < Sinatra::Base
         !!current_user
     end
 
+    def find_car
+      @car = Car.find_by(id: params[:id])
+    end
+
+    def find_user
+      @user = User.find_by(id: params[:id])
+    end
+
   end
 
 end
