@@ -11,7 +11,7 @@
     <p><%= current_user.all_time_favorite.year %> - <%= current_user.all_time_favorite.make %> - <%= current_user.all_time_favorite.model %> - <%= current_user.all_time_favorite.price %>
     </p></li>
     <% end %>
-    <li><a href= "/users/<%= current_user.id %>/edit">Edit User</a></li>
+    <li><a href= "/users/<%= current_user.id %>/edit">Edit User Info</a></li>
     <li><a href= "/">Back</a></li>
   </ul>
   <% if current_user.id == @user.id %>
