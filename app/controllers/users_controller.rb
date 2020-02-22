@@ -18,8 +18,8 @@ class UsersController < ApplicationController
 
   # users create action/route - working
   post '/users' do 
-    
-    @user = User.new(params["user"])
+    #binding.pry
+    @user = User.new(params[:user])
       if @user.save
         session[:user_id] = @user.id 
         redirect to "/users"
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       find_user 
       if current_user.id == @user.id 
         # show the form
-      binding.pry
+      #binding.pry
       erb :"/users/edit"
       else
         redirect to "/"
