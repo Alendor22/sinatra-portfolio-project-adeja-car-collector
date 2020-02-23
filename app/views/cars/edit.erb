@@ -3,23 +3,23 @@
   <input type="hidden" name="_method" value="patch">
     <div>
       <label for="year">Year: </label>
-      <input type="text" name="car[year]" id="year">
+      <input type="text" name="car[year]" id="year" value="<%= @car.year %>">
     </div>
     <div>
       <label for="make">Make: </label>
-      <input type="text" name="car[make]" id="make">
+      <input type="text" name="car[make]" id="make" value="<%= @car.make %>">
     </div>
     <div>
       <label for="model">Model: </label>
-      <input type="text" name="car[model]" id="model">
+      <input type="text" name="car[model]" id="model" value="<%= @car.model %>">
     </div>
     <div>
       <label for="location">Location: </label>
-      <input type="text" name="car[location]" id="location">
+      <input type="text" name="car[location]" id="location" value="<%= @car.location %>">
     </div>
     <div>
       <label for="price">Price: </label>
-      <input type="text" name="car[price]" id="price">
+      <input type="text" name="car[price]" id="price" value="<%= @car.price %>">
     </div>
     <div>
       <label for="status">Status-For Sale: </label>
@@ -27,10 +27,9 @@
       <label for="status">Status-Not For Sale: </label>
       <input type="radio" id="car[status]" name="car[status]" value="false">
     </div>
-  <% if current_user.id == @car.owner.id %>
+  <% if current_user == @car.owner %>
     <input type="submit" value="Edit Car">
     <input type="reset">
   </form>
   <% end %>
-  <a href= "/cars<%= current_user %>">BACK</a>
-  <!--<a href= "/cars/<%= @car.id %>/edit">EDIT CAR</a>-->
+  <a href= "/cars/<%= current_user %>">BACK</a>
