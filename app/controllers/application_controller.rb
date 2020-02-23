@@ -34,9 +34,9 @@ class ApplicationController < Sinatra::Base
       @user = User.find_by(id: params[:id])
     end
 
-    # def car_owner
-    #   current_user == @car.owner
-    # end
+    def car_owner
+      @car.owner_id = current_user.id
+    end
 
   end
 
