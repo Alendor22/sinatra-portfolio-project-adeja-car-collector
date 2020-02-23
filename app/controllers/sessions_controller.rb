@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:user][:username]) # find/validate the user using the username
     
     if user && user.authenticate(params[:user][:password]) # find the user AND the user is authenticated
-      session[:user_id] = user.id # act of logging someone in!
+      session[:user_id] = user.id # act of logging someone in
       redirect to "/users/#{user.id}"
     else
       redirect to '/login'
