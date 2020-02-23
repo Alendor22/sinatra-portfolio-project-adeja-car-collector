@@ -14,8 +14,6 @@ class UsersController < ApplicationController
     erb :"users/new"
   end
 
-
-
   # users create action/route - working
   post '/users' do 
     #binding.pry
@@ -51,7 +49,7 @@ class UsersController < ApplicationController
       find_user
       if logged_in?
         #binding.pry
-        user.update(location: @user.location, favorites: @user.favorite)
+        user.update(params["user"])
         redirect to "/users/#{@user.id}"
       end
     end
