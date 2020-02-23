@@ -17,13 +17,11 @@ class CarsController < ApplicationController
   post '/cars' do 
     # ensure that someone is logged in - done
     # ensure that the current user is assoc. with the car
-    
     if !logged_in?
-      redirect to '/login'
-      
+      redirect to '/login'  
     else
       @car = Car.new(params["car"])
-      @car.owner_id = current_user.id
+      car_owner
       @car.save 
     end
     redirect to "/cars"
@@ -39,7 +37,7 @@ class CarsController < ApplicationController
   # car get edit action
   get '/cars/:id/edit' do 
     find_car
-    if current_user.id == @car.owner
+    if car_owner
     erb :"/cars/edit"
     else redirect to "/cars"
     end
@@ -48,7 +46,7 @@ class CarsController < ApplicationController
   #car update action
   patch '/cars/:id' do 
     find_car
-    if current_user.id == @car.owner_id
+    if car_owner
       @car.update(params["car"])
     end
       redirect to "/cars"
@@ -57,16 +55,10 @@ class CarsController < ApplicationController
   # car destroy action - working 
   delete '/cars/:id' do
     find_car
-    if current_user.id == @car.owner_id
-    @car.destroy(params["car"])
+    if car_owner
+    @car.destroy
     end
     redirect to "/cars"
   end
-
-  # get '/cars/:car_id/owners' do
-  #   @car = Car.find_by(id: params[:id])
-  #   car_owner?
-  #   erb :"/cars/owners"
-  # end
 
 end
