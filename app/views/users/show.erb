@@ -3,22 +3,34 @@
   <ul>
     <li>Username: <%= current_user.username %></li>
     <li>User Location: <%= current_user.location %></li>
+    <% if current_user.cars %>
+      <li>All My Cars: <% current_user.cars.each do |car| %>
+        <p><a href="/cars/<%= car.id %>/edit">Car Year: <%= car.year %> -- Car Make: <%= car.make %> -- Car Model: <%= car.model %>
+            <% end %>
+            </a>
+          </p>
+        </li>
+      <% end %>
     <li>Favorite Cars: <% current_user.favorite_cars.each do |car| %>
-                        <p><%= car.year %> - <%= car.make %> - <%= car.make %> - <%= car.model %></p>
-                        <% end %></li>
+        <p><%= car.year %> - <%= car.make %> - <%= car.model %></p>
+          <% end %>
+      </li>
     <% if current_user.all_time_favorite %>
     <li>All Time Favorite:
-    <p><%= current_user.all_time_favorite.year %> - <%= current_user.all_time_favorite.make %> - <%= current_user.all_time_favorite.model %> - <%= current_user.all_time_favorite.price %>
-    </p></li>
+      <p><%= current_user.all_time_favorite.year %> - <%= current_user.all_time_favorite.make %> - <%= current_user.all_time_favorite.model %> - <%= current_user.all_time_favorite.price %></p>
+    </li>
     <% end %>
-    <li><a href= "/users/<%= current_user.id %>/edit">Edit User Info</a></li>
-    <li><a href= "/">Back</a></li>
+    <a href= "/users/<%= current_user.id %>/edit">Edit User Info</a>
   </ul>
+  <!--<form action="/users/<%= current_user.id %>/edit" method="POST">
+      <input type="hidden" name="_method" value="PATCH">
+      <input type="submit" value="Edit User">
+    </form>-->
   <% if current_user.id == @user.id %>
     <form action="/users/<%= current_user.id %>" method="POST">
       <input type="hidden" name="_method" value="DELETE">
       <input type="submit" value="DELETE">
     </form>
   <% end %>
-
+<a href= "/">Back</a>
   
