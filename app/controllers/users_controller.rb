@@ -54,6 +54,23 @@ class UsersController < ApplicationController
       end
     end
 
+    # # users get favorite_cars route
+    # get '/users/:id/favorite_cars' do
+    #   @favorite = Favorite.find_by(id: params[:id])
+    #   erb :"users/favorite_cars/new"
+    # end
+
+    # post '/users/:id/favorite_cars' do
+    #   @favorite[car_id] = current_user.id
+    #   @favorite = Favorite.new(params[:favorite])
+    #   if @favorite.save
+    #     redirect to "/users"
+    #   else
+    #     erb :"/users/favorite_cars/new"
+    #   end
+    # end
+
+
     # users destroy action
     delete '/users/:id' do
       find_user
