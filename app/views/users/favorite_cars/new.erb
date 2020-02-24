@@ -1,0 +1,17 @@
+<h1>Create New Favorite Car</h1>
+  <form action="/users/<%= current_user.id %>/favorite_cars" method="post">
+    <div>
+      <label for="favorite car year">Favorite Car year: </label>
+      <input type="text" name="user[favorite_cars][:year]" id="favorite car year">
+    </div>
+    <div>
+      <label for="favorite car make">Favorite Car Make: </label>
+      <input type="text" name="user[favorite_cars][:make]" id="favorite car make">
+    </div>
+    <div>
+      <label for="favorite car model">Favorite Car Model: </label>
+      <input type="text" name="user[favorite_cars][:model]" id="favorite car model">
+    </div>
+    <input type="submit" value="Create Favorite Car">
+    <input type="reset">
+  </form>
