@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 
   # users create action/route - working
   post '/users' do 
-    #binding.pry
     @user = User.new(params[:user])
       if @user.save
         session[:user_id] = @user.id 
@@ -37,7 +36,6 @@ class UsersController < ApplicationController
       find_user 
       if current_user.id == @user.id 
         # show the form
-      #binding.pry
       erb :"/users/edit"
       else
         redirect to "/"
@@ -48,8 +46,7 @@ class UsersController < ApplicationController
     patch '/users/:id' do
       find_user
       if logged_in?
-        #binding.pry
-        user.update(params["user"])
+        @user.update(params["user"])
         redirect to "/users/#{@user.id}"
       end
     end
@@ -74,10 +71,10 @@ class UsersController < ApplicationController
     # users destroy action
     delete '/users/:id' do
       find_user
-      if current_user.id != @car.owner_id
+      if current_user.id != @user.id
         redirect to "/users/index"
       else
-        @user.cars.destroy
+        @user.destroy
         session.clear
         redirect "/users"
       end
