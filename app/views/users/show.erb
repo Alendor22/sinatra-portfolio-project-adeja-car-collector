@@ -5,7 +5,7 @@
     <li>User Location: <%= current_user.location %></li>
     <% if current_user.cars %>
       <li>All My Cars: <% current_user.cars.each do |car| %>
-        <p><a href="/cars/<%= car.id %>/edit">Car Year: <%= car.year %> -- Car Make: <%= car.make %> -- Car Model: <%= car.model %>
+        <p><a href="/cars/<%= car.id %>/edit">Car Year: <%= car.year %> -- Car Make: <%= car.make %> -- Car Model: <%= car.model %> -- Car Location: <%= car.location %> -- Car Price: <%= car.price %>
             <% end %>
             </a>
           </p>
