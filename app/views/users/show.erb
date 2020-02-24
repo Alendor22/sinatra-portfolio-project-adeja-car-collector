@@ -20,7 +20,8 @@
       <p><%= current_user.all_time_favorite.year %> - <%= current_user.all_time_favorite.make %> - <%= current_user.all_time_favorite.model %> - <%= current_user.all_time_favorite.price %></p>
     </li>
     <% end %>
-    <a href= "/users/<%= current_user.id %>/edit">Edit User Info</a>
+      <a href="/users/<%= current_user.id %>/edit">Edit User Info</a>
+      <!--<li><a href="/users/<%= current_user.id %>/favorite_cars">Create a Favorite Car</a></li>-->
   </ul>
   <!--<form action="/users/<%= current_user.id %>/edit" method="POST">
       <input type="hidden" name="_method" value="PATCH">
