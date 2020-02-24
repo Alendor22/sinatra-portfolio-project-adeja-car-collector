@@ -35,7 +35,11 @@ class ApplicationController < Sinatra::Base
     end
 
     def car_owner
-      @car.owner_id == current_user.id
+      current_user == @car.owner
+    end
+    
+    def set_car_owner
+      @car.owner_id = current_user.id
     end
 
   end
