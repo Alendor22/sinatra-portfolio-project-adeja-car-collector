@@ -7,7 +7,7 @@
     <li>Car Location: <%= @car.location %></li>
     <li>Price of Car: <%= @car.price %></li>
     <li>Sales Status: <%= @car.status %></li>
-    <li>Car Owner: <%= @car.owner.name %></li>
+    
     <% if @car.fans %>
     <li>All My Fans: <% @car.fans.each do |fan| %>
       <p>Fan Name: <%= fan.name %> -- Fan Username: <%= fan.username %> -- Fan Location: <%= fan.location %>
