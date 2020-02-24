@@ -21,7 +21,7 @@ class CarsController < ApplicationController
       redirect to '/login'  
     else
       @car = Car.new(params["car"])
-      car_owner
+      set_car_owner
       @car.save 
     end
     redirect to "/cars"
@@ -30,7 +30,6 @@ class CarsController < ApplicationController
   #car show action via dynamic route variable
   get '/cars/:id' do
     find_car
-    #binding.pry
     erb :"/cars/show"
   end
 
